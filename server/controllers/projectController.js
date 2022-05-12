@@ -15,7 +15,6 @@ const getProjects = asyncHandler(async (req, res) => {
 // @route GET /api/projects
 // @access Private
 const getUserProjects = asyncHandler(async (req, res) => {
-  console.log("REQ", req);
   const projects = await Project.find({ user: req.user.id });
   res.status(200).json(projects);
 });
