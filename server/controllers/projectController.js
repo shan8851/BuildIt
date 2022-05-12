@@ -1,12 +1,22 @@
 const asyncHandler = require("express-async-handler");
 
 const Project = require("../models/projectModel");
+const User = require("../models/userModel");
+
+// @desc Get all projects
+// @route GET /api/projects
+// @access Public
+const getProjects = asyncHandler(async (req, res) => {
+  const projects = await Project.find();
+  res.status(200).json(projects);
+});
 
 // @desc Get all projects
 // @route GET /api/projects
 // @access Private
-const getProjects = asyncHandler(async (req, res) => {
-  const projects = await Project.find();
+const getUserProjects = asyncHandler(async (req, res) => {
+  console.log("REQ", req);
+  const projects = await Project.find({ user: req.user.id });
   res.status(200).json(projects);
 });
 
@@ -24,6 +34,7 @@ const createProject = asyncHandler(async (req, res) => {
     description,
     stories,
     examples,
+    user: req.user.id,
   });
   res.status(200).json(project);
 });
@@ -37,6 +48,19 @@ const updateProject = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Project not found");
   }
+  const user = await User.findById(req.user.id);
+  // Check for user
+  if (!user) {
+    res.status(401);
+    throw new Error("User not found");
+  }
+
+  // Check that logged in user matches project creator
+  if (project.user.toString() !== user.id) {
+    res.status(401);
+    throw new Error("User not authorised");
+  }
+
   const updatedProject = await Project.findByIdAndUpdate(
     req.params.id,
     req.body
@@ -53,12 +77,25 @@ const deleteProject = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Project not found");
   }
+  const user = await User.findById(req.user.id);
+  // Check for user
+  if (!user) {
+    res.status(401);
+    throw new Error("User not found");
+  }
+
+  // Check that logged in user matches project creator
+  if (project.user.toString() !== user.id) {
+    res.status(401);
+    throw new Error("User not authorised");
+  }
   await project.remove();
   res.status(200).json({ id: req.params.id });
 });
 
 module.exports = {
   getProjects,
+  getUserProjects,
   createProject,
   updateProject,
   deleteProject,

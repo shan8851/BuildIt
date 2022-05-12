@@ -1,19 +1,53 @@
+# PROJECT ENDPOINTS
 GET http://localhost:4000/api/projects
+
+###
+GET http://localhost:4000/api/projects/my-projects
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyN2NkNjMyMjUxM2ZmYjEwMDY5NDg1YyIsImlhdCI6MTY1MjM1MTM3MiwiZXhwIjoxNjU0OTQzMzcyfQ.E4DuQy_rGYFeQdE36aIDZPt9WPpP-vgdbVfSUAUj0OU
 ###
 POST http://localhost:4000/api/projects
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyN2NkNDEzYzJlMTIyZWYxN2EzZTk5MCIsImlhdCI6MTY1MjM1MDA1MCwiZXhwIjoxNjU0OTQyMDUwfQ.l2AT3giw3_uEV97CgD2m1YwZXggnHBWXwuN4g871K1I
 
 {
-  "title": "TODO List",
-  "description": "Simple todo list"
+  "title": "CRUD APP",
+  "description": "CRUD"
 }
 ###
 PUT http://localhost:4000/api/projects/627cc85ed8b6087c1936a973
 Content-Type: application/json
 
 {
-  "stories": ["Setup dev env"]
+  "description": "Hello world in JS"
 }
 ###
-DELETE http://localhost:4000/api/projects/627cc85ed8b6087c1936a973
+DELETE http://localhost:4000/api/projects/627cdfb13500c4f91aba85bd
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyN2NkNDEzYzJlMTIyZWYxN2EzZTk5MCIsImlhdCI6MTY1MjM1MTU2MSwiZXhwIjoxNjU0OTQzNTYxfQ.QsG-OtD4F1riy9hNo263w2oqxlFtcmOnLEQesuTO_FM
+# END PROJECT ENDPOINTS
+
+# USER ENDPOINTS
 ###
+POST http://localhost:4000/api/users
+Content-Type: application/json
+
+{
+  "name": "user1",
+  "email": "user1@email.com",
+  "password": "user1"
+}
+
+###
+POST http://localhost:4000/api/users/login
+Content-Type: application/json
+
+
+{
+  "email": "user1@email.com",
+  "password": "user1"
+}
+
+###
+GET http://localhost:4000/api/users/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyN2NkNDEzYzJlMTIyZWYxN2EzZTk5MCIsImlhdCI6MTY1MjM1MDQ3MSwiZXhwIjoxNjU0OTQyNDcxfQ.5yhkL7kQETc8SA1qGglCGHOpVfPJBw4Y5fx3BBAr7HE
+
+# END USER ENDPOINTS
