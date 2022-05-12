@@ -1,24 +1,51 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import { login, reset } from "../features/auth/authSlice.js"
 
 export const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-  });
+  })
 
-  const { email, password } = formData;
+  const { email, password } = formData
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  )
+
+  useEffect(() => {
+    if (isError) {
+      console.log(message)
+      // add toast
+    }
+
+    if (isSuccess || user) {
+      navigate("/")
+    }
+
+    dispatch(reset())
+  }, [user, isError, isSuccess, message, navigate, dispatch])
 
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
-    }));
-  };
+    }))
+  }
 
   const onSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
-  };
+    e.preventDefault()
+    console.log(formData)
+    const userData = { email, password }
+    dispatch(login(userData))
+  }
+
+  if (isLoading) return <div>Loading</div>
   return (
     <>
       <h1>Login</h1>
@@ -43,5 +70,5 @@ export const Login = () => {
         <button type="submit">Login</button>
       </form>
     </>
-  );
-};
+  )
+}

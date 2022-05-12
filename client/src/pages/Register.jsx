@@ -1,4 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import { register, reset } from "../features/auth/authSlice.js"
 
 export const Register = () => {
   const [formData, setFormData] = useState({
@@ -6,21 +9,48 @@ export const Register = () => {
     email: "",
     password: "",
     password2: "",
-  });
+  })
 
-  const { name, email, password, password2 } = formData;
+  const { name, email, password, password2 } = formData
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  )
+
+  useEffect(() => {
+    if (isError) {
+      console.log(message)
+      // add toast
+    }
+
+    if (isSuccess || user) {
+      navigate("/")
+    }
+
+    dispatch(reset())
+  }, [user, isError, isSuccess, message, navigate, dispatch])
 
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
-    }));
-  };
+    }))
+  }
 
   const onSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
-  };
+    e.preventDefault()
+    if (password !== password2) {
+      console.log("passwords do not match")
+      // Add toast
+    }
+    const userData = { name, email, password }
+    dispatch(register(userData))
+  }
+
+  if (isLoading) return <div>Loading</div>
   return (
     <>
       <h1>Register</h1>
@@ -64,5 +94,5 @@ export const Register = () => {
         <button type="submit">Submit</button>
       </form>
     </>
-  );
-};
+  )
+}
