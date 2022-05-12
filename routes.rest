@@ -4,11 +4,16 @@ POST http://localhost:4000/api/projects
 Content-Type: application/json
 
 {
-  "title": "Project 1",
-  "description": "proj 1"
+  "title": "TODO List",
+  "description": "Simple todo list"
 }
 ###
-PUT http://localhost:4000/api/projects/4
+PUT http://localhost:4000/api/projects/627cc85ed8b6087c1936a973
+Content-Type: application/json
+
+{
+  "stories": ["Setup dev env"]
+}
 ###
-DELETE http://localhost:4000/api/projects/4
+DELETE http://localhost:4000/api/projects/627cc85ed8b6087c1936a973
 ###
