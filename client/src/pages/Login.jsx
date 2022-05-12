@@ -1,7 +1,9 @@
+import { Button, Flex, Heading, Input, Text } from "@chakra-ui/react"
 import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { login, reset } from "../features/auth/authSlice.js"
+import { Layout } from "../components/Layout"
 
 export const Login = () => {
   const [formData, setFormData] = useState({
@@ -47,28 +49,43 @@ export const Login = () => {
 
   if (isLoading) return <div>Loading</div>
   return (
-    <>
-      <h1>Login</h1>
-      <p>Please enter your email and password to login</p>
-      <form onSubmit={onSubmit}>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={email}
-          placeholder="Enter your email..."
-          onChange={onChange}
-        />
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={password}
-          placeholder="Enter your password..."
-          onChange={onChange}
-        />
-        <button type="submit">Login</button>
-      </form>
-    </>
+    <Layout>
+      <Flex
+        flex={1}
+        alignItems="center"
+        justifyContent="center"
+        direction="column"
+        maxW="800px"
+        mx="auto"
+      >
+        <Heading size="2xl">Login</Heading>
+        <Text textAlign="center" fontSize="lg" mt={5}>
+          Please enter your email and password to login
+        </Text>
+        <form onSubmit={onSubmit}>
+          <Input
+            type="email"
+            id="email"
+            name="email"
+            value={email}
+            placeholder="Enter your email..."
+            onChange={onChange}
+            my={2}
+          />
+          <Input
+            type="password"
+            id="password"
+            name="password"
+            value={password}
+            placeholder="Enter your password..."
+            onChange={onChange}
+            my={2}
+          />
+          <Button isFullWidth colorScheme="pink" type="submit">
+            Go!
+          </Button>
+        </form>
+      </Flex>
+    </Layout>
   )
 }

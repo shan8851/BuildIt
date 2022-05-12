@@ -2,6 +2,8 @@ import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { register, reset } from "../features/auth/authSlice.js"
+import { Layout } from "../components/Layout"
+import { Button, Flex, Heading, Input, Text } from "@chakra-ui/react"
 
 export const Register = () => {
   const [formData, setFormData] = useState({
@@ -52,47 +54,62 @@ export const Register = () => {
 
   if (isLoading) return <div>Loading</div>
   return (
-    <>
-      <h1>Register</h1>
-      <p>
-        Please create an account, this allows you to submit projects and manage
-        any projects you have created.
-      </p>
-      <form onSubmit={onSubmit}>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={name}
-          placeholder="Enter your name..."
-          onChange={onChange}
-        />
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={email}
-          placeholder="Enter your email..."
-          onChange={onChange}
-        />
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={password}
-          placeholder="Enter your password..."
-          onChange={onChange}
-        />
-        <input
-          type="password"
-          id="password2"
-          name="password2"
-          value={password2}
-          placeholder="Enter your repeat your password..."
-          onChange={onChange}
-        />
-        <button type="submit">Submit</button>
-      </form>
-    </>
+    <Layout>
+      <Flex
+        flex={1}
+        alignItems="center"
+        justifyContent="center"
+        direction="column"
+        maxW="600px"
+        mx="auto"
+      >
+        <Heading size="2xl">Register</Heading>
+        <Text textAlign="center" fontSize="lg" mt={5}>
+          Please create an account, this allows you to submit projects and
+          manage any projects you have created.
+        </Text>
+        <form onSubmit={onSubmit}>
+          <Input
+            type="text"
+            id="name"
+            name="name"
+            value={name}
+            placeholder="Enter your name..."
+            onChange={onChange}
+            my={2}
+          />
+          <Input
+            type="email"
+            id="email"
+            name="email"
+            value={email}
+            placeholder="Enter your email..."
+            onChange={onChange}
+            my={2}
+          />
+          <Input
+            type="password"
+            id="password"
+            name="password"
+            value={password}
+            placeholder="Enter your password..."
+            onChange={onChange}
+            my={2}
+          />
+          <Input
+            type="password"
+            id="password2"
+            name="password2"
+            value={password2}
+            placeholder="Enter your repeat your password..."
+            onChange={onChange}
+            my={2}
+          />
+          <Button isFullWidth colorScheme="pink" type="submit">
+            Register
+          </Button>
+        </form>
+      </Flex>
+    </Layout>
   )
 }
