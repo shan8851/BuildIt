@@ -11,7 +11,7 @@ const getProjects = asyncHandler(async (req, res) => {
   res.status(200).json(projects)
 })
 
-// @desc Get all projects
+// @desc Get all user projects
 // @route GET /api/projects
 // @access Private
 const getUserProjects = asyncHandler(async (req, res) => {

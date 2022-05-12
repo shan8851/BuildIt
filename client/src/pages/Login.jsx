@@ -25,7 +25,7 @@ export const Login = () => {
     }
 
     if (isSuccess || user) {
-      navigate("/")
+      navigate("/projects")
     }
 
     dispatch(reset())
