@@ -35,16 +35,18 @@ Lots! I have a bunch of ideas and am all ears for anything else users want to se
 
 - Authenticated users should be able to edit their projects
 - Any user should be able to upvote a project
-- Each project should have a difficulty rating
+- Users should be able to downvote a project - this is to try and weed out spam and profanity, maybe after X amount of downvotes the project should be hidden
+- On the last point, project approval might be necessary, but I would rather not delay people being able to add or view projects if possible
+- ~~Each project should have a difficulty rating~~ 🔫
 - Sorting of projects by _date added_, _upvotes_
 - Filtering of projects by _difficulty_
 
 ## Screenshots
+
 ![2](https://user-images.githubusercontent.com/39712238/168235971-0c1b2eb8-67d4-47f7-960f-0e717cc1e250.png)
 ![1](https://user-images.githubusercontent.com/39712238/168235988-33eddc59-f447-4b35-b721-b43d183a30b2.png)
 ![3](https://user-images.githubusercontent.com/39712238/168236006-2f60d92f-7d08-4050-97f8-4eb1b7bfaa74.png)
 ![4](https://user-images.githubusercontent.com/39712238/168236167-5332c2f7-5bae-482c-9945-c61e3903d95c.png)
-
 
 ## Reflection!
 
