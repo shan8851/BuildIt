@@ -27,7 +27,7 @@ export const Login = () => {
     }
 
     if (isSuccess || user) {
-      navigate("/projects")
+      navigate("/my-projects")
     }
 
     dispatch(reset())
@@ -81,7 +81,7 @@ export const Login = () => {
             onChange={onChange}
             my={2}
           />
-          <Button isFullWidth colorScheme="pink" type="submit">
+          <Button isFullWidth colorScheme="green" type="submit">
             Go!
           </Button>
         </form>

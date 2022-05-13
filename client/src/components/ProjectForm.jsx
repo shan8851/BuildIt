@@ -14,6 +14,7 @@ import {
   FormLabel,
   FormHelperText,
   Input,
+  Select,
   Textarea,
   Flex,
   IconButton,
@@ -27,11 +28,12 @@ export const ProjectForm = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
+    difficulty: "",
     stories: [],
     examples: [],
   })
 
-  const { title, description, stories, examples } = formData
+  const { title, description, difficulty, stories, examples } = formData
 
   const dispatch = useDispatch()
   const toast = useToast()
@@ -42,6 +44,7 @@ export const ProjectForm = ({ isOpen, onClose }) => {
     setFormData({
       title: "",
       description: "",
+      difficulty: "",
       stories: [],
       examples: [],
     })
@@ -90,6 +93,20 @@ export const ProjectForm = ({ isOpen, onClose }) => {
         <ModalBody>
           <form onSubmit={onSubmit}>
             <FormControl isRequired my={4}>
+              <FormLabel htmlFor="difficulty">Difficulty</FormLabel>
+              <Select
+                placeholder="Select difficulty"
+                name="difficulty"
+                onChange={onChange}
+                value={difficulty}
+              >
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+              </Select>
+              <FormHelperText>Select the level of difficulty.</FormHelperText>
+            </FormControl>
+            <FormControl isRequired my={4}>
               <FormLabel htmlFor="title">Project Title</FormLabel>
               <Input
                 id="title"
@@ -136,7 +153,7 @@ export const ProjectForm = ({ isOpen, onClose }) => {
                 <FormHelperText>Add user stories one at a time</FormHelperText>
               </FormControl>
               <IconButton
-                colorScheme="pink"
+                colorScheme="green"
                 aria-label="Add Story"
                 onClick={() => handleAddStory()}
                 icon={<FaPlus />}
@@ -157,12 +174,12 @@ export const ProjectForm = ({ isOpen, onClose }) => {
                   resize="vertical"
                 />
                 <FormHelperText>
-                  Add example links to similar projects one at a time
+                  Please paste links and add one at a time!
                 </FormHelperText>
               </FormControl>
 
               <IconButton
-                colorScheme="pink"
+                colorScheme="green"
                 onClick={() => handleAddExample()}
                 aria-label="Add Example"
                 icon={<FaPlus />}
@@ -173,10 +190,10 @@ export const ProjectForm = ({ isOpen, onClose }) => {
         </ModalBody>
 
         <ModalFooter>
-          <Button onClick={onClose} variant="outline" colorScheme="pink">
+          <Button onClick={onClose} variant="outline" colorScheme="green">
             Cancel
           </Button>
-          <Button colorScheme="pink" ml={3} onClick={onSubmit}>
+          <Button colorScheme="green" ml={3} onClick={onSubmit}>
             Create Project
           </Button>
         </ModalFooter>

@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
 
 const projectSchema = mongoose.Schema(
   {
@@ -15,12 +15,20 @@ const projectSchema = mongoose.Schema(
       type: String,
       required: [true, "Please add a description"],
     },
+    difficulty: {
+      type: String,
+      required: [
+        true,
+        'Must be one of "beginner", "intermediate" or "advanced"',
+      ],
+      enum: ["beginner", "intermediate", "advanced"],
+    },
     stories: [String],
     examples: [String],
   },
   {
     timestamps: true,
   }
-);
+)
 
-module.exports = mongoose.model("Projects", projectSchema);
+module.exports = mongoose.model("Projects", projectSchema)

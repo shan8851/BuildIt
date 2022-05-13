@@ -27,10 +27,11 @@ const createProject = asyncHandler(async (req, res) => {
     res.status(400)
     throw new Error("Please add a title and description")
   }
-  const { title, description, stories, examples } = req.body
+  const { title, description, difficulty, stories, examples } = req.body
   const project = await Project.create({
     title,
     description,
+    difficulty,
     stories,
     examples,
     user: req.user.id,

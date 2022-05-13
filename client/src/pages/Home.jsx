@@ -1,6 +1,5 @@
 import {
   Badge,
-  Box,
   Button,
   Center,
   Container,
@@ -13,6 +12,7 @@ import { Layout } from "../components/Layout"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 import { getProjects, reset } from "../features/projects/projectSlice"
+import { FaUserAlt } from "react-icons/fa"
 
 export const Home = () => {
   const dispatch = useDispatch()
@@ -40,7 +40,7 @@ export const Home = () => {
         <Text
           fontWeight="black"
           fontSize={["2xl", "6xl"]}
-          color="pink.400"
+          color="green.400"
           as="u"
           ml={2}
         >
@@ -65,7 +65,9 @@ export const Home = () => {
         </Container>
       </Flex>
       <Flex justifyContent="center" mb="20px">
-        <Button colorScheme="pink">Register</Button>
+        <Button rightIcon={<FaUserAlt />} colorScheme="green">
+          Register
+        </Button>
       </Flex>
       <Text fontWeight="black" fontSize={["2xl", "6xl"]} textAlign="center">
         👷 Projects
@@ -74,13 +76,18 @@ export const Home = () => {
       {projects.map((project) => (
         <Flex justifyContent="center">
           <Container key={project._id} p={4} my={4} border="1px" rounded="lg">
-            <Badge colorScheme="pink">Title:</Badge>
-            <Text my={2}> {project.title}</Text>
-            <Badge colorScheme="pink">Description:</Badge>
+            <Badge colorScheme="green">Difficulty:</Badge>
+            <Text my={2}> {project.difficulty}</Text>
+            <Badge colorScheme="green">Title:</Badge>
+            <Text fontSize="2xl" fontWeight="extrabold" my={2}>
+              {" "}
+              {project.title}
+            </Text>
+            <Badge colorScheme="green">Description:</Badge>
             <Text my={2}> {project.description}</Text>
             {project.stories.length > 0 && (
               <>
-                <Badge colorScheme="pink">User Stories:</Badge>
+                <Badge colorScheme="green">User Stories:</Badge>
                 {project.stories.map((story) => (
                   <Text my={2} key={story}>
                     🔨 {story}
@@ -90,12 +97,12 @@ export const Home = () => {
             )}
             {project.examples.length > 0 && (
               <Flex direction="column">
-                <Badge colorScheme="pink" w="fit-content">
+                <Badge colorScheme="green" w="fit-content">
                   Examples:
                 </Badge>
                 {project.examples.map((example) => (
                   <Link
-                    colorScheme="pink"
+                    color="green.300"
                     my={2}
                     key={example}
                     href={example}

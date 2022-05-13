@@ -8,7 +8,7 @@ export const Footer = () => {
           Built with ❤️ & ☕ by{" "}
           <Link
             fontWeight="black"
-            color="pink.400"
+            color="green.400"
             href="https://twitter.com/shan8851"
           >
             @shan8851

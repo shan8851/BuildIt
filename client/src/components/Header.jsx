@@ -36,7 +36,7 @@ export const Header = () => {
               </Link>
               <Button
                 leftIcon={<FaSignOutAlt />}
-                colorScheme="pink"
+                colorScheme="green"
                 variant="solid"
                 onClick={onLogout}
                 ml={4}
