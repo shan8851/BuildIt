@@ -14,13 +14,16 @@ Well no more! **BuildIt** is here.
 
 The API was built in _nodejs_ well _express_ to be specific and my database of choice is [MongoDB](https://www.mongodb.com/).
 
+JWT for Auth
+
 ## Project Status
 
-This is still very much a WIP and still in active development. Right now it has very limited feature, but, ship early and often they say!
+This is still very much a WIP and still in active development. Right now it has a very limited feature set, but, ship early and often they say!
 
-Unauthenticated users can simply few all project ideas on the home page. At the moment each project is made up like so:
+Unauthenticated users can simply view all project ideas on the home page. At the moment each project is made up like so:
 
 ```
+Difficulty (on of beginner, intermediate or advanced)
 Title (required)
 Description (required)
 User stories (optional but most have)
@@ -31,7 +34,7 @@ Authenticated users can hit the `/my-projects` route and then have the ability t
 
 ## What's Coming?
 
-Lots! I have a bunch of ideas and am all ears for anything else users want to see. Here is some features I have in mind:
+Lots! I have a bunch of ideas and am all ears for anything else people would like to see. Here is some features I have in mind:
 
 - Authenticated users should be able to edit their projects
 - Any user should be able to upvote a project
